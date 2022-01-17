@@ -19,7 +19,7 @@ public class CreateTableTest {
 			if(con!=null)
 				st = con.createStatement();
 			//prepare the sql query
-			String query="CREATE TABLE  IRCTC_AACHAL5 (EMAIL VARCHAR(15) PRIMARY KEY, PASSWORD VARCHAR2(10) ,DOB DATE,LOCATION VARCHAR(20))";
+			String query="CREATE TABLE  IRCTC_AACHAL6(EMAIL VARCHAR(15) PRIMARY KEY, PASSWORD VARCHAR2(10) ,DOB DATE,LOCATION VARCHAR(20))";
 			// String query = "DROP TABLE  TEMP_AACHAL1 ";
 			//  String query = "INSERT INTO IRCTC_AACHAL  VALUES( 'MOZARE@.COM' ,  'AACHAL' ,  '20-AUG-1999 ',  'HYD')";
 			//String query ="SELECT * FROM  IRCTC_AACHAL   ";

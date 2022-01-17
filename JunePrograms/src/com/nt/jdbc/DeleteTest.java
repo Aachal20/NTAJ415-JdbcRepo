@@ -16,10 +16,10 @@ public class DeleteTest {
 			String loc =null;
 			if(sc!=null) {
 				System.out.println("enter  location( hyd)" );
-				loc = sc.nextLine();
+				loc = sc.next();
 			}
 			//give required query to sql 
-			loc="'loc'";
+			loc="'+loc+'";
 			//Load jdbc driver class
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			//establish the connection

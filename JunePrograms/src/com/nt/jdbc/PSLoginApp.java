@@ -11,121 +11,121 @@ import java.util.Scanner;
 public class PSLoginApp {
 
 	public static void main(String[] args) {
-		
-		 final String  LOGIN_QUERY= "SELECT COUNT(*) FROM IRCTC_TAB WHERE UNAME=? AND PWD=?";
+
+		final String  LOGIN_QUERY= "SELECT COUNT(*) FROM IRCTC_TAB WHERE UNAME=? AND PWD=?";
 		Scanner sc =null;
 		Connection con=null;
-		
+
 		ResultSet rs = null;
 		PreparedStatement ps=null;
 		String user=null,pass=null;
-		
+
 		try {
-			
-			 sc =new Scanner(System.in);
-			 if(sc!=null){
-				 System.out.println("enter login username");
-				 user=sc.nextLine();
-				 System.out.println("enter the password");
-				 pass=sc.nextLine();
-			 }//if
-				
-						
+
+			sc =new Scanner(System.in);
+			if(sc!=null){
+				System.out.println("enter login username");
+				user=sc.nextLine();
+				System.out.println("enter the password");
+				pass=sc.nextLine();
+			}//if
+
+
 			//Load jdbc driver class
-		     Class.forName("oracle.jdbc.driver.OracleDriver");
-             //establishb the connection
-		     con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe" , "system","aachal");
-		     
-		     
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//establishb the connection
+			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe" , "system","aachal");
+
+
 			//Create jdbc  PreparedStatement object
-		     if(con!=null)
-		    	 
-		        ps  = con.prepareStatement(LOGIN_QUERY);
-		     //Set VALUES TO PARAM of precompiled sql bquery
-		     if(ps!=null) {
-		    	 ps.setString(1, user);
-		       ps.setString(2, pass);
-		     }
-		     //prepare sql query
-		     //select count(*) from IRCTC_TAB where uname=raja and pwd=rani
-		     //String query="SELECT COUNT(*) FROM IRCTC_TAB WHERE UNAME="+user+ "AND PWD ="+pass;
-		    //String query="select count(*) from IRCTC_TAB where uname="+user+"and  pwd="+pass;
-		    System.out.println();
-		     
-		   
-		     
-		     //send and execute sql query to db s/w
-		     if(ps!=null)
-		       rs = ps.executeQuery();
-		     
-		     
-		     //process the resultset object
-		     
-		     if(rs!=null) {
-		    	 rs.next();
-		        int count=rs.getInt(1);
-		     
-		     
-		        //process the result
-		      if(count==0)
-		    	 System.out.println("INVALID CREDENTIALS");
-		     else
-		    	 System.out.println("VALID CREDENTIALS");
-		     }//if	 
-		   }//try
-		
-	   catch(SQLException se){
-		     se.printStackTrace();
-     	}
-     	catch(Exception e) {
-		     e.printStackTrace();
-	    }
-		
-		finally {
-			
-		   try {
-			if(rs!=null)
-				rs.close();
-			 
-		   }
-		   catch(SQLException se) {
-			se.printStackTrace();
-		   }
-		
-		try {
-			if(ps!=null)
-				ps.close();
-			 
-		}
-		catch(SQLException se) {
-			se.printStackTrace();
-		}
-		
-		try {
 			if(con!=null)
-				con.close();
-			 
-		}
-		catch(SQLException se) {
+
+				ps  = con.prepareStatement(LOGIN_QUERY);
+			//Set VALUES TO PARAM of precompiled sql bquery
+			if(ps!=null) {
+				ps.setString(1, user);
+				ps.setString(2, pass);
+			}
+			//prepare sql query
+			//select count(*) from IRCTC_TAB where uname=raja and pwd=rani
+			//String query="SELECT COUNT(*) FROM IRCTC_TAB WHERE UNAME="+user+ "AND PWD ="+pass;
+			//String query="select count(*) from IRCTC_TAB where uname="+user+"and  pwd="+pass;
+			System.out.println();
+
+
+
+			//send and execute sql query to db s/w
+			if(ps!=null)
+				rs = ps.executeQuery();
+
+
+			//process the resultset object
+
+			if(rs!=null) {
+				rs.next();
+				int count=rs.getInt(1);
+
+
+				//process the result
+				if(count==0)
+					System.out.println("INVALID CREDENTIALS");
+				else
+					System.out.println("VALID CREDENTIALS");
+			}//if	 
+		}//try
+
+		catch(SQLException se){
 			se.printStackTrace();
-		}
-		try {
-			if(sc!=null)
-				sc.close();
-			 
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
+		finally {
+
+			try {
+				if(rs!=null)
+					rs.close();
+
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+
+			try {
+				if(ps!=null)
+					ps.close();
+
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+
+			try {
+				if(con!=null)
+					con.close();
+
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+			try {
+				if(sc!=null)
+					sc.close();
+
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+
+
 		}//finally
 	}//class
 }	
 
-		
-		
-		
-		
+
+
+
+
 
 
