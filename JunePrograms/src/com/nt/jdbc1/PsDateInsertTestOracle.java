@@ -30,7 +30,7 @@ public class PsDateInsertTestOracle {
 				sdom=sc.next();
 			}
 			
-			//For DOB 
+			//For DOB                      [string-->util--->sql]
 			//Converting string date values to java.util.Date class obj
 			SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
 			java.util.Date udob = sdf1.parse(sdob) ;
@@ -40,14 +40,14 @@ public class PsDateInsertTestOracle {
 	     	java.sql.Date sqdob =new java.sql.Date(ms);
 	     	
 	     	
-			//For DOJ(Direct conversion )  yyyy-MM-dd
+			//For DOJ(Direct conversion )  yyyy-MM-dd           [string----->sql]
 	     	//Converting string date values to java.sql.Date class obj
 	            java.sql.Date sqdoj =  java.sql.Date.valueOf(sdoj);
 	     	
 	     
 			
 			//For5 DOM  MMM-dd-yyyy
-	     	//Converting string date values to java.util.Date class obj
+	     	//Converting string date values to java.util.Date class obj     [string---------->util]
 	     	SimpleDateFormat sdf2 = new SimpleDateFormat("MMM-dd-yyyy");
 			java.util.Date udom= sdf2.parse(sdom) ;
 			
@@ -69,10 +69,10 @@ public class PsDateInsertTestOracle {
 			
 			//SET VALUES TO PARAM
 			if(ps!=null) {
-				ps.setString(1, name);
-			    ps.setDate(2, sqdob);
-			    ps.setDate(3, sqdoj);
-			    ps.setDate(4, sqdom);
+				ps.setString(2, name);
+			    ps.setDate(3, sqdob);
+			    ps.setDate(4, sqdoj);
+			    ps.setDate(5, sqdom);
 			
 			}
 			

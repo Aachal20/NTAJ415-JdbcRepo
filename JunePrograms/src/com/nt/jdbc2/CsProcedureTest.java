@@ -22,9 +22,9 @@ public class CsProcedureTest {
 				System.out.println("Enter second no::");
 				second = sc.nextInt();
 			}
-			try(Connection  con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system" , "aachal");
+			try(Connection  con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system" , "manager");
 			
-			//try(Connection con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system ", "aachal");
+			//try(Connection con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system ", "manager");
 					//create CallableStatment obj having query to call a pl/sql procedure as precompiled sql query
 					
 			CallableStatement cs = con.prepareCall(CALL_PROCEDURE);){
